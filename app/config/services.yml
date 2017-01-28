@@ -1,0 +1,24 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/service_container.html
+parameters:
+#    parameter_name: value
+
+services:
+#    service_name:
+#        class: AppBundle\Directory\ClassName
+#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    admin.user:
+        class: AppBundle\Admin\UserAdmin
+        arguments: [~, AppBundle\Entity\User, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: User }
+
+    admin.position:
+        class: AppBundle\Admin\PositionAdmin
+        arguments: [~, AppBundle\Entity\Position, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Position }
+                        
+    api_authentication_entry_point:
+         class: AppBundle\Entity\Auth\ApiAuthenticationEntryPoint
+         arguments: [ api ]
