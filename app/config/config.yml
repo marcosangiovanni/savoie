@@ -100,7 +100,8 @@ fos_oauth_server:
     auth_code_class:     AppBundle\Entity\Auth\AuthCode
     service:
         user_provider: fos_user.user_manager             # This property will be used when valid credentials are given to load the user upon access token creation
-        
+        options:
+            access_token_lifetime: 86400 #will set token life time to 3600 seconds        
 fos_user:
     db_driver: orm
     firewall_name: api                                  # Seems to be used when registering user/reseting password,

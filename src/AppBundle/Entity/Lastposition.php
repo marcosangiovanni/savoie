@@ -7,11 +7,11 @@ use Gedmo\Translatable\Translatable;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @ORM\Table(name="position")
- * @ORM\Table(indexes={@ORM\Index(name="idx_log_position", columns={"position"})})
+ * @ORM\Table(name="lastposition")
+ * @ORM\Table(indexes={@ORM\Index(name="idx_log_lastposition", columns={"position"})})
  * @ORM\Entity
  */
-class Position
+class Lastposition
 {
     /**
      * @ORM\Column(type="integer")
@@ -99,7 +99,7 @@ class Position
     }
 
     /**
-     * @param point $position
+     * @param point $lastposition
      * @return Training
      */
     public function setPosition($position){

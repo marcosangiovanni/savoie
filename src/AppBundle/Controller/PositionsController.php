@@ -49,7 +49,8 @@ class PositionsController extends FOSRestController
 		
 		//Create new point
 		$request = $this->getRequest();
-		$point = new Point($request->get('x'),$request->get('y'));
+		$data = $request->get('data');
+		$point = new Point($data['x'],$data['y']);
 		
     	$position = new Position();
 
@@ -60,6 +61,9 @@ class PositionsController extends FOSRestController
 		$em = $this->getDoctrine()->getManager();
 	    $em->persist($position);
 	    $em->flush();
+		
+		$view = $this->view($position, 200);
+       	return $this->handleView($view);
 		
     } 
 
