@@ -7,11 +7,11 @@ use Gedmo\Translatable\Translatable;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @ORM\Table(name="lastposition")
- * @ORM\Table(indexes={@ORM\Index(name="idx_log_lastposition", columns={"position"})})
+ * @ORM\Table(name="stop")
+ * @ORM\Table(indexes={@ORM\Index(name="idx_log_stop", columns={"position"})})
  * @ORM\Entity
  */
-class Lastposition
+class Stop
 {
     /**
      * @ORM\Column(type="integer")
@@ -25,15 +25,20 @@ class Lastposition
      */
     private $user_id;
 
-	/**
-     * @ORM\Column(type="integer", length=100, nullable=true)
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
      */
-    private $stop_id;
+    private $start;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
-    private $datetime;
+    private $stop;
+
+	/**
+     * @ORM\Column(type="integer", length=100)
+     */
+    private $duration;
 
     /**
 	 * @ORM\Column(type="point")
@@ -53,7 +58,7 @@ class Lastposition
     private $updated;
 
 	/**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="trainings")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="stops")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
@@ -72,8 +77,22 @@ class Lastposition
     /**
      * @return \DateTime 
      */
-    public function getDatetime(){
-        return $this->datetime;
+    public function getStart(){
+        return $this->start;
+    }
+
+    /**
+     * @return \DateTime 
+     */
+    public function getStop(){
+        return $this->stop;
+    }
+
+    /**
+     * @return \Int 
+     */
+    public function getDuration(){
+        return $this->duration;
     }
 
     /**
@@ -88,13 +107,6 @@ class Lastposition
      */
     public function getUserId(){
         return $this->user_id;
-    }
-
-    /**
-     * @return integer
-     */
-    public function getStopId(){
-        return $this->stop_id;
     }
 
 	/**********************
@@ -129,11 +141,26 @@ class Lastposition
     }
 
     /**
-     * @param integer $userId
-     * @return Training
+     * @return \Stop 
      */
-    public function setStopId($stop_id){
-        $this->stop_id = $stop_id;
+    public function setStart($start){
+        $this->start = $start;
+        return $this;
+    }
+
+    /**
+     * @return \Stop 
+     */
+    public function setStop($stop){
+        $this->stop = $stop;
+        return $this;
+    }
+
+    /**
+     * @return \Stop 
+     */
+    public function setDuration($duration){
+        $this->duration = $duration;
         return $this;
     }
 
