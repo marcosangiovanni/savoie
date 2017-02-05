@@ -10,7 +10,7 @@ users:
     host:     projectsavoie.com
     resource: AppBundle\Controller\UsersController
 
-positions:
+positionsz:
     type:     rest
     prefix:   /api/v1
     host:     projectsavoie.com
