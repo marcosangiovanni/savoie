@@ -1,17 +1,14 @@
 utils:
     type:     rest
     prefix:   /api/v1
-    host:     localhost
     resource: AppBundle\Controller\UtilsController
 
 users:
     type:     rest
     prefix:   /api/v1
-    host:     localhost
     resource: AppBundle\Controller\UsersController
 
 positions:
     type:     rest
     prefix:   /api/v1
-    host:     localhost
     resource: AppBundle\Controller\PositionsController
