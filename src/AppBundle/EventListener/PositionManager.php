@@ -57,8 +57,6 @@ class PositionManager
 			
 			$distance = $distance[0]['distance_in_meters'];
 			
-			var_dump($distance);
-			
 			if($distance < 20){
 				//If distance is lower than N it's a "stay in place" and i create a Stop entity
 				if($lastposition->getStopId()){
